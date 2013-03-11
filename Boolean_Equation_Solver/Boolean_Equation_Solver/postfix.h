@@ -10,6 +10,6 @@ using namespace std;
 string infixToPostfix(string infixString);
 
 //Takes an equation in postfix notation and a map of variables to values, and returns the result of the expression
-int evaluateExpression(string postfixString, map<char, int> &values);
+int evaluateExpression(string postfixString, map<char, bool> &values);
 
 #endif

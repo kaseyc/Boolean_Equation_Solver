@@ -31,5 +31,12 @@ int main()
 	cout << "Your postfix espression is: " << postfix << endl;
 	cout << "Your variables are: " << variables << endl;
 
+	map<char, bool> test;
+	test['a'] = 1;
+	test['b'] = 1;
+	test['c'] = 0;
+	test['d'] = 0;
+
+	cout << evaluateExpression(postfix, test) << endl;
 	return 0;
 }

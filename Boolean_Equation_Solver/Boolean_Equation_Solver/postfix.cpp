@@ -81,7 +81,7 @@ string infixToPostfix(string infixString)
 }
 
 
-int evaluateExpression(string postfixString, map<char, int> &values)
+int evaluateExpression(string postfixString, map<char, bool> &values)
 {
 	int result = -1;
 	int var1, var2;
@@ -91,7 +91,8 @@ int evaluateExpression(string postfixString, map<char, int> &values)
 	{
 		if (isalpha(postfixString[i]))
 		{
-			operands.push(postfixString[i]);
+			var1 = (bool) values[postfixString[i]];
+			operands.push(var1);
 		}
 
 		else if (postfixString[i] == '!')
@@ -138,4 +139,6 @@ int evaluateExpression(string postfixString, map<char, int> &values)
 			}
 		}
 	}
+
+	return operands.top();
 }
