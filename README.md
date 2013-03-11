@@ -4,10 +4,15 @@ Currently:
 
 Uses single letters as variables. It is case sensitive, so up to 52 all together.
 Supports the following operators:
+
 	OR: +
+	
 	NOT: !
+	
 	AND: *
+	
 	XOR: ^
+	
 	I may add more in the future
 
 Will error out if the equation contains anything other than letters, supported operators, and parentheses.
