@@ -2,6 +2,8 @@ v1.0
 _____
 This program takes a boolean expression in infix notation and outputs the results as a formatted truth table. 
 
+[Screenshot](http://imgur.com/sdvYtNG)
+
 Uses single letters as variables. It is case sensitive, so up to 52 all together.
 Supports the following operators:
 
