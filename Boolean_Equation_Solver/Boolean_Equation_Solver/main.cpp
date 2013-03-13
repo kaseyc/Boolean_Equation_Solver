@@ -1,17 +1,19 @@
 #include <iostream>
 #include <string>
-#include <ctype.h>
+#include <cctype>
+#include <cstdio>
 #include "postfix.h"
 
 using namespace std;
 
 void error(string message); //Defined in utilities.h
 void increment(map<char, bool> &variables);
+void outputTable(string equation, map<char, bool> variables);
 
 int main()
 {
 	string equation;
-	int leftParen = 0, rightParen = 0, numValues = 0;
+	int leftParen = 0, rightParen = 0;
 	map<char, bool> variables;
 	string valid_operators = "()!+*^";
 	cout << "Enter your equation: ";
@@ -34,20 +36,9 @@ int main()
 
 	string postfix = infixToPostfix(equation);
 
-	numValues = pow(2.0, (int) variables.size()); //There are 2^n numbers in an n digit binary number (0-2^n -1)
+	cout << endl << endl;
 
-	cout << "Your equation is: " << equation << endl;
-	cout << "Your postfix expression is: " << postfix << endl;
-
-	for (int i = 0; i < numValues; i++)
-	{
-		map<char, bool>::iterator j;
-		for (j = variables.begin(); j != variables.end(); j++)
-			cout << j->second;
-
-		cout << endl;
-		increment(variables);
-	}
+	outputTable(postfix, variables);
 
 	return 0;
 }
@@ -72,4 +63,43 @@ void increment(map<char, bool> &variables)
 	}
 	cout << endl;
 	return;
+}
+
+void outputTable(string equation, map<char, bool> variables)
+{
+	int numValues = pow(2.0, (int) variables.size()); //There are 2^n numbers in an n digit binary number (0-2^n -1)
+
+	//Prints the table header
+	map<char, bool>::iterator i;
+	for (i = variables.begin(); i != variables.end(); i++)
+	{
+		printf("|  %c  ", i->first);
+	}
+	printf("|  %s  |\n", "Value");
+	
+	int tableWidth = 6*variables.size()+11;
+	for(unsigned int i = 0; i < tableWidth; i++)
+	{
+		if (i%6 == 0 && i <= 6*variables.size())
+			cout << "+";
+		else if (i == tableWidth-1)
+			cout << "+";
+		else
+			cout << "-";
+	}
+	cout << endl;
+
+	//Prints the values
+	for (unsigned int i = 0; i < numValues; i++)
+	{
+		map<char, bool>::iterator j;
+		for (j = variables.begin(); j != variables.end(); j++)
+		{
+			printf("|  %d  ",j->second);
+		}
+		printf("|    %d    |\n", evaluateExpression(equation,variables));
+
+		increment(variables);
+	}
+	
 }
