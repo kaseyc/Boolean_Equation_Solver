@@ -6,7 +6,7 @@ using namespace std;
 
 inline void error(string message)
 {
-	cout << "Error: " << message << endl;
+	cerr << "Error: " << message << endl;
 	exit(1);
 }
 
