@@ -4,13 +4,13 @@
 #include <iostream>
 using namespace std;
 
-inline void error(string message)
+void error(string message)
 {
 	cerr << "Error: " << message << endl;
 	exit(1);
 }
 
-inline int precedence(char c)
+int precedence(char c)
 {
 	int precedence;
 	switch (c)

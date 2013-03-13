@@ -5,6 +5,7 @@
 
 using namespace std;
 
+void error(string message); //Defined in utilities.h
 void increment(map<char, bool> &variables);
 
 int main()
@@ -53,6 +54,8 @@ int main()
 
 void increment(map<char, bool> &variables)
 {
+	//Increments the map as if the values formed a binary number
+	//For example [(a,0),(b,1),(c,1)] becomes [(a,1),(b,0),(c,0)]
 	map<char, bool>::reverse_iterator i; 
 	for (i = variables.rbegin(); i != variables.rend(); i++)
 	{

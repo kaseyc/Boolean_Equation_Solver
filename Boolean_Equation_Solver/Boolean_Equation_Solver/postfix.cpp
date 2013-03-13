@@ -1,4 +1,5 @@
 #include "postfix.h"
+#include "utilities.h"
 #include <stack>
 
 string infixToPostfix(string infixString)
@@ -20,7 +21,7 @@ string infixToPostfix(string infixString)
 			}
 		}
 
-		else if (operators.empty() /*&& infixString[i] != ')'*/)
+		else if (operators.empty() && infixString[i] != ')')
 		{
 			operators.push(infixString[i]);
 		}
