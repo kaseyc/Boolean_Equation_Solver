@@ -1,6 +1,6 @@
-This program takes a boolean expression in infix notation and evaluates it. In the future, I plan to make it output K-maps and truth tables, as well as take command line arguments. I also plan on attempting to add in a function to take a truth table and output an expression using sum of products or product of sums.
-
-Currently: 
+v1.0
+_____
+This program takes a boolean expression in infix notation and outputs the results as a formatted truth table. 
 
 Uses single letters as variables. It is case sensitive, so up to 52 all together.
 Supports the following operators:
@@ -13,9 +13,28 @@ Supports the following operators:
 	
 	XOR: ^
 	
-	I may add more in the future
+	Potentially more
 
 Will error out if the equation contains anything other than letters, supported operators, and parentheses.
+
 Supports implicit multiplication of variables (e.g. ab -> a*b, a!b -> a*!b)
 
 Order of operations(High to low): NOT, AND, XOR, OR.
+____
+
+Usage:
+
+Just compile the files and run. Uses only standard libraries.
+
+The Visual Studio project file is included if you like.
+____
+
+Future Plans:
+
+1. Command line arguments
+
+2. K-maps
+
+3. Config file to customize operator characters (e.g. use ~ for NOT instead of !)
+
+4. Generate expression from formatted input (maybe)
