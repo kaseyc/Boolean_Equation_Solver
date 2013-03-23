@@ -22,9 +22,7 @@ string infixToPostfix(string infixString)
 		}
 
 		else if (operators.empty() && infixString[i] != ')')
-		{
 			operators.push(infixString[i]);
-		}
 
 		else
 		{
@@ -43,9 +41,7 @@ string infixToPostfix(string infixString)
 						operators.pop();
 
 						if (operators.empty())
-						{
 							error("Mismatched Parentheses");
-						}
 					}
 					operators.pop();
 				}
@@ -70,9 +66,7 @@ string infixToPostfix(string infixString)
 	while (!operators.empty())
 	{
 		if (operators.top() == '(' || operators.top() == ')')
-		{
 			error("Mismatched Parentheses");
-		}
 
 		postfix += operators.top();
 		operators.pop();

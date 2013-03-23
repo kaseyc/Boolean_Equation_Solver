@@ -12,6 +12,7 @@ public:
 	Expression(string infixEquation, string operators);
 
 	void outputTable();
+	void updateEquation(string infixEquation);
 
 private:
 	string postfixEquation;

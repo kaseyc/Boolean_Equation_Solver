@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 {
 	string equation;
 	string validOperators = "()!+*^";
-	ofstream expressions;
+	ifstream expressionFile;
 
 	if (argc == 1)
 	{
@@ -44,21 +44,43 @@ int main(int argc, char* argv[])
 					if (i+1 < argc)
 					{
 						string file(argv[i+1]);
-						expressions.open(file);
+						expressionFile.open(file);
+						if (expressionFile.fail())
+							error("Unable to open file");
 					}
 					else
-					{
 						error("Must provide a file");
-					}
 				}
 			}
 		}
 	}
 
-	Expression a(equation, validOperators);
-	
-	a.outputTable();
+	if(expressionFile.is_open())
+	{
+		getline(expressionFile, equation);
+		cout << "Equation: " << equation << endl << endl;
+	}
 
+	Expression a(equation, validOperators);
+	a.outputTable();
+	cout << endl << endl;
+
+	while(expressionFile.is_open() && !expressionFile.eof())
+	{
+		getline(expressionFile, equation);
+
+		if(!expressionFile.fail())
+		{
+			cout << "Equation: " << equation << endl << endl;
+			a.updateEquation(equation);
+			a.outputTable();
+			cout << endl << endl;
+		}
+		else
+			error("Problem reading file");
+	} 
+	
+	expressionFile.close();
 	return 0;
 }
 

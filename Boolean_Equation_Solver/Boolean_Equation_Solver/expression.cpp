@@ -14,14 +14,10 @@ Expression::Expression(string infixEquation, string operators)
 	for (unsigned int i = 0; i < infixEquation.length(); i++)
 	{
 		if (isalpha(infixEquation[i]))
-		{
 			variables[infixEquation[i]] = 0;
-		}
 
 		else if (validOperators.find(infixEquation[i]) == string::npos)
-		{
 			error("Equations must contain only alphabetic variables and operators");
-		}
 	}
 
 	postfixEquation = infixToPostfix(infixEquation);
@@ -65,6 +61,23 @@ void Expression::outputTable()
 	}
 }
 
+void Expression::updateEquation(string infixEquation)
+{
+	postfixEquation = "";
+	variables.clear();
+
+	for (unsigned int i = 0; i < infixEquation.length(); i++)
+	{
+		if (isalpha(infixEquation[i]))
+			variables[infixEquation[i]] = 0;
+
+		else if (validOperators.find(infixEquation[i]) == string::npos)
+			error("Equations must contain only alphabetic variables and operators");
+	}
+
+	postfixEquation = infixToPostfix(infixEquation);
+}
+
 void Expression::increment(map<char, bool> &variables)
 {
 	//Increments the map as if the values formed a binary number
@@ -79,10 +92,7 @@ void Expression::increment(map<char, bool> &variables)
 		}
 
 		else
-		{
 			i->second = 0;
-		}
 	}
-	cout << endl;
 	return;
 }
