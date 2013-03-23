@@ -61,10 +61,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="expression.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="postfix.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="expression.h" />
     <ClInclude Include="postfix.h" />
     <ClInclude Include="utilities.h" />
   </ItemGroup>
