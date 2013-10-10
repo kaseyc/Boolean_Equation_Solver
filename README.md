@@ -29,14 +29,3 @@ Usage:
 Just compile the files and run. Uses only standard libraries.
 
 The Visual Studio project file is included if you like.
-____
-
-Future Plans:
-
-1. Command line arguments
-
-2. K-maps
-
-3. Config file to customize operator characters (e.g. use ~ for NOT instead of !)
-
-4. Generate expression from formatted input (maybe)
